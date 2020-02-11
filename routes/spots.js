@@ -54,20 +54,19 @@ router.get("/spotlist/detail/:id", (req, res) => {
           .then(responsefromLegacyAPI => {
             // let ideal = responsefromLegacyAPI.data;
             console.log(responsefromLegacyAPI); */
-            res.render("detail.hbs", {
-              info,
-              overview,
-              spotInfo,
-              windInfo,
-              tideTime,
-              nextTideInfo,
-              waveInfo,
-              weather,
-              location,
-              levels,
-              boards
-            });
-          });
+        res.render("detail.hbs", {
+          info,
+          overview,
+          spotInfo,
+          windInfo,
+          tideTime,
+          nextTideInfo,
+          waveInfo,
+          weather,
+          location,
+          levels,
+          boards
+        });
       });
   });
 });
