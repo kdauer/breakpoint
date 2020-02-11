@@ -29,7 +29,7 @@ router.get("/spotlist", (req, res) => {
 router.get("/spotlist/detail/:id", (req, res) => {
   Spot.find({ id: req.params.id }).then(info => {
     console.log("here", info);
-    res.render("detail.hbs", info);
+    res.render("detail.hbs", { info });
   });
 });
 
