@@ -1,1 +1,11 @@
 <h1>Home</h1>
+<form action="/spotlist" method="GET">
+  <label for="spots">Choose a break type</label>
+  <select id="breaks" name="breaktypes">
+    <option value="beach">beach</option>
+    <option value="reef">reef</option>
+    <option value="point">point</option>
+  </select>
+  <input type="text" name="example">
+  <button type="submit">Search for your type</button>
+</form>
