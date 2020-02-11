@@ -49,24 +49,25 @@ router.get("/spotlist/detail/:id", (req, res) => {
         const boards = funcs.boardType(spotInfo);
 
         // res.json(responseFromAPI.data.forecast);
-        /* return axios
+        return axios
           .get(`https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`)
           .then(responsefromLegacyAPI => {
-            // let ideal = responsefromLegacyAPI.data;
-            console.log(responsefromLegacyAPI); */
-        res.render("detail.hbs", {
-          info,
-          overview,
-          spotInfo,
-          windInfo,
-          tideTime,
-          nextTideInfo,
-          waveInfo,
-          weather,
-          location,
-          levels,
-          boards
-        });
+            let ideal = responsefromLegacyAPI.data[0].travel.best;
+            res.render("detail.hbs", {
+              info,
+              overview,
+              spotInfo,
+              windInfo,
+              tideTime,
+              nextTideInfo,
+              waveInfo,
+              weather,
+              location,
+              levels,
+              boards,
+              ideal
+            });
+          });
       });
   });
 });

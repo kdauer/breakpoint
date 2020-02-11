@@ -28,3 +28,9 @@
       <span>{{boards}}</span>
     </div>
   </div>
+  <div class="ideal-condition-overview">
+    <h3>Ideal {{info.0.name}} Surf Condition</h3>
+    {{#each ideal}}
+    <p><span>{{@key}}: </span><span>{{this}}</span></p>
+    {{/each}}
+  </div>
