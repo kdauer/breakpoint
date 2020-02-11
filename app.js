@@ -9,6 +9,16 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
+mongoose.Promise = Promise;
+mongoose
+  .connect("mongodb://localhost/basic-auth", { useMongoClient: true })
+  .then(() => {
+    console.log("Connected to Mongo!");
+  })
+  .catch(err => {
+    console.error("Error connecting to mongo", err);
+  });
+
 mongoose
   .connect("mongodb://localhost:27017/Break-Point", { useNewUrlParser: true })
   .then(x => {
@@ -53,5 +63,8 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
 app.use("/", index);
+
+const router = require("./routes/auth");
+app.use("/", router);
 
 module.exports = app;
