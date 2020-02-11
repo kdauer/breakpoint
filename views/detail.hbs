@@ -1,3 +1,15 @@
 <h1>Spot Overview</h1>
 
 <h2>{{info.0.name}} {{info.0.type}}break</h3>
+  <div class="forecast-overview">
+    <div>
+      <p>Wave Height <span>{{overview.waveHeight.humanRelation}}</span></p>
+    </div>
+    <div>current tide <span>{{overview.tide.current.height}}m</span><br>
+      <span>{{nextTideInfo}}at{{tideTime}}</span>
+    </div>
+    <div>Wind <span>{{windInfo.speed}}</span><br>
+      <span>{{windInfo.direction}} - {{windInfo.degree}}</span></div>
+    <div></div>
+    <div></div>
+  </div>
