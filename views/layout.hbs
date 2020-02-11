@@ -10,7 +10,12 @@
 </head>
 
 <body>
-  <div><a href="http://localhost:3000/signup">Sign Up!</a></div>
+  {{#if user}}
+  <a href="/auth/logout">Log out</a>
+  {{else}}
+  <a href="../views/auth/signup.hbs">Sign up</a>
+  <a href="../views/auth/login.hbs">Log in</a>
+  {{/if}}
 
   {{{body}}}
 
