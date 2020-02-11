@@ -39,14 +39,18 @@ router.get("/spotlist/detail/:id", (req, res) => {
       .then(responseFromAPI => {
         let overview = responseFromAPI.data.forecast;
         const windInfo = funcs.wind(overview.wind);
-        const tideTime = funcs.convertTSnext(overview.tide);
-        const nextTideInfo = funcs.nextTide(overview.tide);
+        const tideTime = funcs.convertTSnext(overview);
+        const nextTideInfo = funcs.nextTide(overview);
+        const waveInfo = funcs.wave(overview);
+        const weather = funcs.weatherIcon(overview);
         // res.json(responseFromAPI.data.forecast);
         res.render("detail.hbs", {
           overview,
           windInfo,
           tideTime,
-          nextTideInfo
+          nextTideInfo,
+          waveInfo,
+          weather
         });
       });
   });

@@ -3,13 +3,22 @@
 <h2>{{info.0.name}} {{info.0.type}}break</h3>
   <div class="forecast-overview">
     <div>
-      <p>Wave Height <span>{{overview.waveHeight.humanRelation}}</span></p>
+      <p>Wave Height <span>{{waveInfo.height}}</span></p>
+      <p>{{waveInfo.relation}}</p>
     </div>
     <div>current tide <span>{{overview.tide.current.height}}m</span><br>
-      <span>{{nextTideInfo}}at{{tideTime}}</span>
+      <span>{{nextTideInfo.type}}Tide {{nextTideInfo.height}}m at {{tideTime}}</span>
     </div>
     <div>Wind <span>{{windInfo.speed}}</span><br>
-      <span>{{windInfo.direction}} - {{windInfo.degree}}</span></div>
-    <div></div>
-    <div></div>
+      <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
+    <div>
+      <p>Water Temperature</p>
+      <img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg" alt="WaterIcon">
+      <span>{{overview.waterTemp.min}} - {{overview.waterTemp.max}} °C</span>
+    </div>
+    <div>
+      <p>Weather</p>
+      <img src="{{weather}}" alt="{{overview.weather.condition}}">
+      <span>{{overview.weather.temperature}}°C</span>
+    </div>
   </div>
