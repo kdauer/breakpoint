@@ -8,16 +8,11 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const passport = require("passport");
 
-mongoose.Promise = Promise;
-mongoose
-  .connect("mongodb://localhost/basic-auth", { useMongoClient: true })
-  .then(() => {
-    console.log("Connected to Mongo!");
-  })
-  .catch(err => {
-    console.error("Error connecting to mongo", err);
-  });
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const flash = require("connect-flash");
 
 mongoose
   .connect("mongodb://localhost:27017/Break-Point", { useNewUrlParser: true })
@@ -59,17 +54,30 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Break-Point-App";
+
+app.use(
+  session({
+    secret: "our-passport-local-strategy-app",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+
+app.use(flash());
+require("./passport")(app);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const index = require("./routes/index");
 app.use("/", index);
 
-<<<<<<< HEAD
 const spotRoutes = require("./routes/spots");
 app.use("/", spotRoutes);
 
 const router = require("./routes/auth");
 app.use("/", router);
->>>>>>> 0607049fbf4b3bc4580c9ea25cdbdb882c48644e
 
 module.exports = app;
