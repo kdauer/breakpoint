@@ -453,5 +453,45 @@
     "region": "Douro and Minho",
     "id": "584204204e65fad6a77099d8",
     "__v": { "$numberInt": "0" }
+  },
+  {
+    "_id": { "$oid": "5e41bdc1d03c7df14fcc6bc1" },
+    "type": ["beach", "sandbar"],
+    "name": "Praia da Barra",
+    "region": "Beira",
+    "id": "5842041f4e65fad6a7708e5f",
+    "_v": { "$numberInt": "0" }
+  },
+  {
+    "_id": { "$oid": "5e41beead03c7df14fcc6bc2" },
+    "type": ["beach"],
+    "name": "Praia de Mira",
+    "region": "Beira",
+    "id": "5842041f4e65fad6a7708e60",
+    "__v": { "$numberInt": "0" }
+  },
+  {
+    "_id": { "$oid": "5e41bf81d03c7df14fcc6bc3" },
+    "type": ["point"],
+    "name": "Buarcos",
+    "region": "Beira",
+    "id": "5842041f4e65fad6a7708e56",
+    "__v": { "$numberInt": "0" }
+  },
+  {
+    "_id": { "$oid": "5e41c005d03c7df14fcc6bc4" },
+    "type": ["beach", "reef"],
+    "name": "Figuera da Foz",
+    "region": "Beira",
+    "id": "584204204e65fad6a770998e",
+    "__v": { "$numberInt": "0" }
+  },
+  {
+    "_id": { "$oid": "5e41c056d03c7df14fcc6bc5" },
+    "type": ["beach"],
+    "name": "Cabedelo",
+    "region": "Beira",
+    "id": "5842041f4e65fad6a7708bc5",
+    "__v": { "$numberInt": "0" }
   }
 ]
