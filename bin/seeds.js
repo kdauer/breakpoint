@@ -1,5 +1,6 @@
 // const mongoose = require("mongoose");
 // const axios = require("axios");
+
 // const spotsOwn = [
 //   {
 //     name: "Cortegaca",
@@ -885,7 +886,8 @@
 //   "58581a836630e24c44879094",
 //   "58581a836630e24c44879112",
 //   "58581a836630e24c4487908e",
-//   "58581a836630e24c4487900f"
+//   "58581a836630e24c4487900f",
+//   "58581a836630e24c44879095"
 // ];
 
 // const mapOfPromises = subregions.map(el =>
