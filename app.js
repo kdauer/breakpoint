@@ -77,7 +77,7 @@ app.use("/", index);
 const spotRoutes = require("./routes/spots");
 app.use("/", spotRoutes);
 
-const router = require("./routes/auth");
-app.use("/", router);
+const authRoute = require("./routes/auth");
+app.use("/", authRoute);
 
 module.exports = app;
