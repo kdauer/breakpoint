@@ -64,12 +64,10 @@ app.locals.title = "Express - Generated with IronGenerator";
 const index = require("./routes/index");
 app.use("/", index);
 
-<<<<<<< HEAD
 const spotRoutes = require("./routes/spots");
 app.use("/", spotRoutes);
 
 const router = require("./routes/auth");
 app.use("/", router);
->>>>>>> 0607049fbf4b3bc4580c9ea25cdbdb882c48644e
 
 module.exports = app;
