@@ -47,20 +47,27 @@ router.get("/spotlist/detail/:id", (req, res) => {
         const location = funcs.coordinates(spotInfo);
         const levels = funcs.ability(spotInfo);
         const boards = funcs.boardType(spotInfo);
+
         // res.json(responseFromAPI.data.forecast);
-        res.render("detail.hbs", {
-          info,
-          overview,
-          spotInfo,
-          windInfo,
-          tideTime,
-          nextTideInfo,
-          waveInfo,
-          weather,
-          location,
-          levels,
-          boards
-        });
+        /* return axios
+          .get(`https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`)
+          .then(responsefromLegacyAPI => {
+            // let ideal = responsefromLegacyAPI.data;
+            console.log(responsefromLegacyAPI); */
+            res.render("detail.hbs", {
+              info,
+              overview,
+              spotInfo,
+              windInfo,
+              tideTime,
+              nextTideInfo,
+              waveInfo,
+              weather,
+              location,
+              levels,
+              boards
+            });
+          });
       });
   });
 });
