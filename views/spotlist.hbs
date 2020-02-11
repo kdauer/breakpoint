@@ -1,1 +1,9 @@
-Hello
+<h1>Spots in Portugal</h1>
+
+{{#each obj}}
+
+<h2>{{@key}}</h2>
+{{#each this}}
+<p><a href="/spotDetail">{{this}}</a></p>
+{{/each}}
+{{/each}}

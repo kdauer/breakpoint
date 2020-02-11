@@ -3,11 +3,21 @@ const router = express.Router();
 const Spot = require("../models/Spot");
 
 router.get("/spotlist", (req, res) => {
-  //console.log(req.query.breaktypes);
-
   Spot.find({ type: req.query.breaktypes }).then(data => {
-    console.log(data);
+    let arr = data;
+    let regions = [...new Set(arr.map(e => e.region))];
+    var obj = {};
+    regions.forEach(region => {
+      return (obj[region] = []);
+    });
+    let regionName = arr.map(item => {
+      return obj[item.region].push(item.name);
+    });
+    let sortedData = [];
+    sortedData.push(obj);
+    console.log(obj);
+    res.render("spotlist.hbs", { obj });
   });
-  res.render("spotlist.hbs");
 });
+
 module.exports = router;
