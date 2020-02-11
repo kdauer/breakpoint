@@ -6,12 +6,12 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-router.get("/login", (req, res, next) => {
+router.get("/auth/login", (req, res, next) => {
   res.render("auth/login", { message: req.flash("error") });
 });
 
 router.post(
-  "/login",
+  "/auth/login",
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/auth/login",
@@ -20,8 +20,8 @@ router.post(
   })
 );
 
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+router.get("/auth/signup", (req, res, next) => {
+  res.render("../views/auth/signup.hbs");
 });
 
 router.post("/signup", (req, res, next) => {
