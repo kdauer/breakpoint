@@ -38,19 +38,28 @@ router.get("/spotlist/detail/:id", (req, res) => {
       )
       .then(responseFromAPI => {
         let overview = responseFromAPI.data.forecast;
+        let spotInfo = responseFromAPI.data.spot;
         const windInfo = funcs.wind(overview.wind);
         const tideTime = funcs.convertTSnext(overview);
         const nextTideInfo = funcs.nextTide(overview);
         const waveInfo = funcs.wave(overview);
         const weather = funcs.weatherIcon(overview);
+        const location = funcs.coordinates(spotInfo);
+        const levels = funcs.ability(spotInfo);
+        const boards = funcs.boardType(spotInfo);
         // res.json(responseFromAPI.data.forecast);
         res.render("detail.hbs", {
+          info,
           overview,
+          spotInfo,
           windInfo,
           tideTime,
           nextTideInfo,
           waveInfo,
-          weather
+          weather,
+          location,
+          levels,
+          boards
         });
       });
   });
