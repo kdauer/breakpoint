@@ -22,10 +22,16 @@
       <p>{{waveInfo.relation}}</p>
     </div>
     <div>current tide <span>{{overview.tide.current.height}}m</span><br>
+      <span>{{previousTideInfo.type}}Tide {{previousTideInfo.height}}m at {{tideTimeprev}}</span><br>
       <span>{{nextTideInfo.type}}Tide {{nextTideInfo.height}}m at {{tideTime}}</span>
     </div>
     <div>Wind <span>{{windInfo.speed}}</span><br>
       <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
+    <div>
+      {{#each swellInfo}}
+      <span>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</span><br>
+      {{/each}}
+    </div>
     <div>
       <p>Water Temperature</p>
       <img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg" alt="WaterIcon">
