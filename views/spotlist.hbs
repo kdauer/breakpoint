@@ -1,9 +1,11 @@
 <h1>Spots in Portugal</h1>
-
-{{#each obj}}
-
-<h2>{{@key}}</h2>
-{{#each this}}
-<p><a href="spotlist/detail/{{this.id}}">{{this.name}}</a></p>
-{{/each}}
-{{/each}}
+<div class="spotlist-container">
+  {{#each obj}}
+  <div class="region-container">
+    <h2 id="region-name">{{@key}}</h2>
+    {{#each this}}
+    <p class="name-spot-list"><a href="spotlist/detail/{{this.id}}">{{this.name}}</a></p>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>

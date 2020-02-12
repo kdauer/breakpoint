@@ -43,7 +43,7 @@ router.get("/spotlist/forecast/:id", (req, res) => {
         let convertTime = funcs.convertTS(chartTime);
         let chartMax = forecast[1];
         let chartMin = forecast[2];
-        console.log(forecast);
+        // console.log(forecast);
         res.send({ convertTime, chartMax, chartMin });
       });
   });

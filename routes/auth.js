@@ -67,6 +67,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/auth/user/:id", (req, res) => {
+  //console.log(req.user.id);
   User.findByIdAndUpdate(
     req.user._id,
     {
@@ -74,9 +75,10 @@ router.post("/auth/user/:id", (req, res) => {
     },
     { new: true }
   ).then(result => {
-    result.populate("favourites");
+    result.populate({ path: "favourites" });
     console.log(result);
-    res.render("auth/user.hbs");
+    let list = result;
+    res.render("auth/user.hbs", { result, list });
   });
 });
 

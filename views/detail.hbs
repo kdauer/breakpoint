@@ -14,38 +14,40 @@
     }
   </style> --}}
 </head>
-<h1>Spot Overview</h1>
-<h2>{{info.0.name}} {{info.0.type}}break</h3>
-  <form action="/auth/user/{{info.0.id}}" method="post">
-
+<div class="detail-container">
+  <h1>Spot Overview</h1>
+  <h2>{{info.0.name}} {{info.0.type}}break</h2>
+  <form id="favourite-form" action="/auth/user/{{info.0.id}}" method="post">
     <button type="submit">Favourite</button>
   </form>
   <div class="forecast-overview">
-    <div>
+    <div id="wave-height-container">
       <p>Wave Height <span>{{waveInfo.height}}</span></p>
       <p>{{waveInfo.relation}}</p>
     </div>
-    <div>current tide <span>{{overview.tide.current.height}}m</span><br>
+    <div id="tide-container">current tide <span>{{overview.tide.current.height}}m</span><br>
       <span>{{previousTideInfo.type}}Tide {{previousTideInfo.height}}m at {{tideTimeprev}}</span><br>
       <span>{{nextTideInfo.type}}Tide {{nextTideInfo.height}}m at {{tideTime}}</span>
     </div>
-    <div>Wind <span>{{windInfo.speed}}</span><br>
+    <div id="wind-container">Wind <span>{{windInfo.speed}}</span><br>
       <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
-    <div>Swells
+    <div id="swell-container">Swells
       {{#each swellInfo}}
       <span>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</span><br>
       {{/each}}
     </div>
-    <div>
+    <div id="water-temp-container">
       <p>Water Temperature</p>
       <img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg" alt="WaterIcon">
       <span>{{overview.waterTemp.min}} - {{overview.waterTemp.max}} °C</span>
     </div>
-    <div>
+    <div id="weather-container">
       <p>Weather</p>
       <img src="{{weather}}" alt="{{overview.weather.condition}}">
       <span>{{overview.weather.temperature}}°C</span>
     </div>
+  </div>
+  <div id="recommendation-container">
     <div>recommended ability level:
       <span>{{levels}}</span>
     </div>
@@ -92,9 +94,10 @@
       .setLngLat(coords)
       .addTo(map);
   </script>
-  <canvas id="bar-chart" width="600" height="350"></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
-  <script src="/javascripts/chart.js"></script>
+  <div id="chart"><canvas id="bar-chart" width="600" height="350"></canvas></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="/javascripts/chart.js"></script>
