@@ -68,7 +68,7 @@ app.use(
 );
 
 app.use(flash());
-require("./passport")(app);
+require("./Passport/index")(app);
 
 app.use(passport.initialize());
 app.use(passport.session());
