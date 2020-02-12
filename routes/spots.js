@@ -29,6 +29,25 @@ router.get("/spotlist", (req, res) => {
 });
 
 const funcs = require("../lib/utils");
+router.get("/spotlist/forecast/:id", (req, res) => {
+  Spot.find({ id: req.params.id }).then(() => {
+    // console.log("here", info);
+    return axios
+      .get(
+        `https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=${req.params.id}`
+      )
+      .then(responseForecastAPI => {
+        // console.log(responseForecastAPI.data);
+        const forecast = funcs.waveForecast(responseForecastAPI.data.data.wave);
+        let chartTime = forecast[0];
+        let convertTime = funcs.convertTS(chartTime);
+        let chartMax = forecast[1];
+        let chartMin = forecast[2];
+        console.log(forecast);
+        res.send({ convertTime, chartMax, chartMin });
+      });
+  });
+});
 
 router.get("/spotlist/detail/:id", (req, res) => {
   Spot.find({ id: req.params.id }).then(info => {
