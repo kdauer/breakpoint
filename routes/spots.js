@@ -4,9 +4,9 @@ const axios = require("axios");
 const Spot = require("../models/Spot");
 
 router.get("/spotlist", (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
   Spot.find({ type: req.query.breaktypes }).then(data => {
-    console.log(data);
+    // console.log(data);
     let arr = data;
     let regions = [...new Set(arr.map(e => e.region))];
     var obj = {};

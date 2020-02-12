@@ -16,6 +16,10 @@
 </head>
 <h1>Spot Overview</h1>
 <h2>{{info.0.name}} {{info.0.type}}break</h3>
+  <form action="/auth/user/{{info.0.id}}" method="post">
+
+    <button type="submit">Favourite</button>
+  </form>
   <div class="forecast-overview">
     <div>
       <p>Wave Height <span>{{waveInfo.height}}</span></p>

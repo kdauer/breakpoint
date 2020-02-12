@@ -52,7 +52,7 @@ router.post("/signup", (req, res, next) => {
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
-          res.redirect("/auth/user.hbs");
+          res.redirect("/auth/user");
         }
       });
     })
@@ -63,7 +63,25 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/home");
+  res.redirect("/");
+});
+
+router.post("/auth/user/:id", (req, res) => {
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $push: { favourites: req.params.id }
+    },
+    { new: true }
+  ).then(result => {
+    result.populate("favourites");
+    console.log(result);
+    res.render("auth/user.hbs");
+  });
+});
+
+router.get("/auth/user", (req, res) => {
+  res.render("auth/user.hbs");
 });
 
 module.exports = router;

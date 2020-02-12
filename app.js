@@ -72,6 +72,10 @@ require("./Passport/index")(app);
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 const index = require("./routes/index");
 app.use("/", index);
