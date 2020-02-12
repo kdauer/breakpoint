@@ -27,7 +27,7 @@
     </div>
     <div>Wind <span>{{windInfo.speed}}</span><br>
       <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
-    <div>
+    <div>Swells
       {{#each swellInfo}}
       <span>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</span><br>
       {{/each}}
@@ -48,6 +48,12 @@
     <div>recommended board type:
       <span>{{boards}}</span>
     </div>
+  </div>
+  <div class="ideal-condition-overview">
+    <h3>Ideal {{info.0.name}} Surf Condition</h3>
+    {{#each ideal}}
+    <p><span>{{@key}}: </span><span>{{this}}</span></p>
+    {{/each}}
   </div>
   <div id="map" style="width:500px; height:500px;"></div>
   <script>
