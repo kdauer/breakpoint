@@ -44,10 +44,9 @@ router.get("/spotlist/detail/:id", (req, res) => {
         const nextTideInfo = funcs.nextTide(overview);
         const waveInfo = funcs.wave(overview);
         const weather = funcs.weatherIcon(overview);
-        const location = funcs.coordinates(spotInfo);
+        const location = JSON.stringify(funcs.coordinates(spotInfo));
         const levels = funcs.ability(spotInfo);
         const boards = funcs.boardType(spotInfo);
-
         // res.json(responseFromAPI.data.forecast);
         /* return axios
           .get(`https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`)
@@ -55,6 +54,7 @@ router.get("/spotlist/detail/:id", (req, res) => {
             // let ideal = responsefromLegacyAPI.data;
             console.log(responsefromLegacyAPI); */
         res.render("detail.hbs", {
+          layout: false,
           info,
           overview,
           spotInfo,
