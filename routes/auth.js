@@ -13,7 +13,7 @@ router.get("/auth/login", (req, res, next) => {
 router.post(
   "/auth/login",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/auth/user",
     failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true
@@ -52,7 +52,7 @@ router.post("/signup", (req, res, next) => {
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
-          res.redirect("/");
+          res.redirect("/auth/user.hbs");
         }
       });
     })

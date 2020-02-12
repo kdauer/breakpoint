@@ -51,9 +51,22 @@
   </div>
   <div class="ideal-condition-overview">
     <h3>Ideal {{info.0.name}} Surf Condition</h3>
-    {{#each ideal}}
-    <p><span>{{@key}}: </span><span>{{this}}</span></p>
-    {{/each}}
+    <div>Compass Icon
+      <p><strong>Swell Direction</strong></p>
+      <p>{{ideal.swell}}</p>
+    </div>
+    <div>Wind Icon
+      <p><strong>Wind</strong></p>
+      <p>{{ideal.wind}}</p>
+    </div>
+    <div>Wave Ivon
+      <p><strong>Surf Height</strong></p>
+      <p>{{ideal.size}}</p>
+    </div>
+    <div>Tide Icon
+      <p><strong>Tide</strong></p>
+      <p>{{ideal.tide}}</p>
+    </div>
   </div>
   <div id="map" style="width:500px; height:500px;"></div>
   <script>
