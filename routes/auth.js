@@ -74,12 +74,16 @@ router.post("/auth/user/:id", (req, res) => {
       $push: { favourites: req.params.id }
     },
     { new: true }
-  ).then(result => {
-    result.populate({ path: "favourites" });
-    console.log(result);
-    let list = result;
-    res.render("auth/user.hbs", { result, list });
-  });
+  )
+    .then(result => {
+      result.populate({ path: "favourites" });
+      console.log(result);
+      let list = result;
+      res.render("auth/user.hbs", { result, list });
+    })
+    .catch(err => {
+      next(err);
+    });
 });
 
 router.get("/auth/user", (req, res) => {
