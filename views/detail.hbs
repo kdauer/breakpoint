@@ -13,6 +13,11 @@
     <div>Wind <span>{{windInfo.speed}}</span><br>
       <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
     <div>
+      {{#each swellInfo}}
+      <span>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</span><br>
+      {{/each}}
+    </div>
+    <div>
       <p>Water Temperature</p>
       <img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg" alt="WaterIcon">
       <span>{{overview.waterTemp.min}} - {{overview.waterTemp.max}} °C</span>

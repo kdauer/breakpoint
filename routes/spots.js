@@ -49,6 +49,8 @@ router.get("/spotlist/detail/:id", (req, res) => {
         const location = funcs.coordinates(spotInfo);
         const levels = funcs.ability(spotInfo);
         const boards = funcs.boardType(spotInfo);
+        const swellInfo = funcs.swell(overview.swells);
+        console.log(swellInfo);
         // res.json(responseFromAPI.data.forecast);
         return axios
           .get(`https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`)
@@ -68,7 +70,8 @@ router.get("/spotlist/detail/:id", (req, res) => {
               location,
               levels,
               boards,
-              ideal
+              ideal,
+              swellInfo
             });
           });
       });
