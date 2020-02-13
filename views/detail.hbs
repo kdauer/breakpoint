@@ -17,6 +17,15 @@
     }
   </style> --}}
 </head>
+<nav class="navbar">
+  <a href="/">Home</a>
+  {{#if user}}
+  <a href="/logout">Log out</a>
+  {{else}}
+  <div><a href="/auth/signup">Sign Up!</a></div>
+  <div><a href="/auth/login">Log In</a></div>
+  {{/if}}
+</nav>
 <div class="detail-container">
   {{#if message}}
   <div class="error-message">{{ message }}</div>

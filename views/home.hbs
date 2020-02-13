@@ -1,14 +1,17 @@
-<h1>Home</h1>
-<div class="select-form">
-    <form action="/spotlist" method="GET">
-        <label for="spots">Choose a break type</label>
-        <select id="breaks" name="breaktypes">
-            <option style='display: none' value=''></option>
-            <option value="[]">all types</option>
-            <option value="beach">beach</option>
-            <option value="reef">reef</option>
-            <option value="point">point</option>
-        </select>
-        <button type="submit">Search for your type</button>
-    </form>
+<div class="home-container">
+    <h1 class="home-title">Hang Loose</h1>
+    <h3>Choose the type of break</h3>
+    <div class="select-form">
+        <form action="/spotlist" method="GET">
+            <div class="select-wrapper">
+                <select id="breaks" name="breaktypes" onchange="this.form.submit()">
+                    <option style='display: none' value=''>breaktype</option>
+                    <option value="beach" value="reef" value="point">all types</option>
+                    <option value="beach">beach</option>
+                    <option value="reef">reef</option>
+                    <option value="point">point</option>
+                </select></div>
+        </form>
+    </div>
 </div>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>

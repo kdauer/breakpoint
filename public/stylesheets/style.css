@@ -1,8 +1,162 @@
 html {
   font-family: "Montserrat, Helvetica Neue, Helvetica Neue Regular, Helvetica Regular", "Helvetica", "Arial,sans-serif";
+  font-size: 16px;
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Montserrat, Helvetica Neue, Helvetica Neue Regular, Helvetica Regular", "Helvetica", "Arial,sans-serif";
+  margin: 0;
+  padding: 0;
   font-size: 16px; }
 
-a {
-  color: #00b7ff; }
+.navbar {
+  background-color: #0643a1;
+  width: 100vw;
+  font-size: 2em;
+  display: flex;
+  justify-content: space-around;
+  padding: 1%;
+  position: sticky; }
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff; }
+
+.home-container {
+  background-image: url("/images/tim-marshall-LPbLMl3CamA-unsplash.jpg");
+  height: 90vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  margin: 0;
+  padding: 5%; }
+
+.home-title {
+  text-align: center;
+  color: white;
+  font-weight: 100;
+  font-size: 5em;
+  margin: 0;
+  padding: 0; }
+
+.home-container h3 {
+  text-align: center;
+  color: white;
+  font-weight: 200;
+  font-size: 2.5rem;
+  margin: 4em 0; }
+
+.select-form {
+  background-color: #e1e1e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80vw;
+  height: 10%;
+  padding: 0 10%; }
+
+.select-wrapper {
+  width: 60vw;
+  position: relative; }
+
+.select-wrapper::before {
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #fff;
+  pointer-events: none; }
+
+select {
+  background: url(/images/down-chevron.png) no-repeat right;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  color: #000000;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer; }
+
+select::-ms-expand {
+  display: none; }
+
+select option {
+  color: #666; }
+
+select:focus::-ms-value {
+  background-color: transparent; }
+
+.spotlist-site {
+  display: flex;
+  justify-content: center; }
+
+.spotlist-container {
+  font-weight: 200;
+  margin: 5vh 0;
+  padding: 0 10vw;
+  max-width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #e1e1e1; }
+
+.region-container p a {
+  text-decoration: none;
+  color: #229fff; }
+
+#form-container {
+  margin: 30px auto;
+  width: 380px; }
+
+#form-container label {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%; }
+
+#form-container input,
+#form-container button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px; }
+
+#form-container button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 100%; }
+
+#form-container button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: 0.3s ease background; }
+
+.error-message {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
