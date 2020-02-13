@@ -32,7 +32,10 @@
   {{/if}}
   <h1>SURF REPORT AND FORECAST</h1>
   <h2>for {{info.0.name}}</h2>
-  <a href="/auth/user/favourites/{{info.0._id}}">Save to Favourites</a>
+  <form id="add-favourites">
+    <button type="submit">Save to Favourites</button>
+  </form>
+  <p id="added" style="display: noner">Added to Favorites!</p>
   <div class="forecast-overview">
     <div id="wave-height-container">
       <p>Wave Height <span>{{waveInfo.height}}</span></p>
@@ -114,5 +117,17 @@
 <script
   src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="/javascripts/chart.js"></script>
+
+<script>
+  document.querySelector("#add-favourites").onsubmit = (event) => {
+    event.preventDefault()
+
+    axios.post("/auth/user/favourites/{{info.0.id}}").then(() => {
+      console.log("response received")
+      document.querySelector("#add-favourites").style.display = "none";
+      document.getElementById("added").style.display = "block"
+    })
+  }
+</script>
 
 </html>
