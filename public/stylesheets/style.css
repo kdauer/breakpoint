@@ -21,7 +21,8 @@ body {
 
 .navbar a {
   text-decoration: none;
-  color: #ffffff; }
+  color: #ffffff;
+  font-weight: 100; }
 
 .home-container {
   background-image: url("/images/tim-marshall-LPbLMl3CamA-unsplash.jpg");
@@ -129,6 +130,89 @@ select:focus::-ms-value {
   color: #229fff;
   width: 75vw;
   font-size: 1em; }
+
+.detail-container {
+  margin: 0;
+  margin-top: 1%; }
+
+.detail-container h1 {
+  font-weight: 100;
+  margin-left: 10vw; }
+
+.detail-container h2 {
+  font-weight: 200; }
+
+.detail-container h1,
+h2,
+h3 {
+  display: inline; }
+
+.detail-container form {
+  display: inline; }
+
+#favourite {
+  background-image: url(/images/star.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 32px;
+  width: 32px;
+  border: none;
+  transition: all ease-in-out 0.2s;
+  cursor: pointer; }
+
+#favourite:hover {
+  border: 1px solid #229fff;
+  background-color: #229fff; }
+
+#added {
+  display: inline;
+  color: #229fff; }
+
+.detail-names {
+  display: inline; }
+
+.forecast-overview {
+  margin: 0 5rem;
+  margin-top: 2.5em;
+  line-height: 0.35;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  background-color: whitesmoke; }
+
+#description-title {
+  font-weight: 100;
+  color: #879ba4; }
+
+.forecast-overview div {
+  padding: 2.5rem; }
+
+#recommendation-container {
+  background-color: #e6e6e6;
+  margin: 0 5rem;
+  display: flex;
+  justify-content: space-evenly; }
+
+#recommendation-container p {
+  color: #879ba4; }
+
+#recommendation-container p span {
+  color: black; }
+
+.ideal-condition-overview {
+  display: flex; }
+
+#ideal-title {
+  margin-top: 1.75em; }
+
+#ideal-title h3 {
+  font-weight: 200;
+  margin-left: 10vw;
+  margin-top: 2.5em;
+  font-size: 2em; }
+
+button span {
+  display: none; }
 
 #form-container {
   margin: 30px auto;
