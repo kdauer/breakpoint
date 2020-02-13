@@ -102,7 +102,7 @@ router.get("/auth/user", (req, res) => {
   User.findById(req.user._id)
     .populate({ path: "favourites" })
     .then(result => {
-      console.log(result);
+      console.log("here are the results", result);
       res.render("auth/user.hbs", { result: result });
     });
 });
