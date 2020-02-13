@@ -4,10 +4,13 @@
     {{#each obj}}
     <div class="region-container">
       <h2 id="region-name">{{@key}}</h2>
+    </div>
+    <div class="region-spot">
       {{#each this}}
       <p class="name-spot-list"><a href="spotlist/detail/{{this.id}}">{{this.name}}</a></p>
       {{/each}}
     </div>
+
     {{/each}}
   </div>
 </div>
