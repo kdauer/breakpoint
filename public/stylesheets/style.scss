@@ -269,6 +269,39 @@ h4 {
   font-size: 2em;
 }
 
+#fav-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.favourite-title {
+  font-weight: 300;
+  font-size: 2em;
+  text-align: center;
+  color: rgb(38, 38, 38);
+  margin-top: 2rem;
+}
+
+.favourite-container {
+  max-width: 75vw;
+  font-weight: 200;
+  margin: 5vh 10%;
+  padding: 0 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(225, 225, 225);
+}
+
+.favourite-container p a {
+  text-decoration: none;
+  color: rgb(34, 159, 259);
+  width: 75vw;
+  font-size: 1em;
+}
+
 footer {
   margin-top: 3rem;
   margin-bottom: 3rem;

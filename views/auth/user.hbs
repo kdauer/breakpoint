@@ -1,10 +1,12 @@
 <div class="userpage-container">
-  <h1>Welcome {{result.user.username}}</h1>
-  <p>here are your favourite spots:</p>
+  <div id="fav-image"><img src="/images/013-signal.png" width="64px" alt="Locals"></div>
+  <h1 class="favourite-title">here are your favourite spots:</h1>
   {{#if message}}
   <div class="error-message">{{ message }}</div>
   {{/if}}
-  {{#each result.favourites}}
-  <p class="saved-favourite"><a href="/spotlist/detail/{{this.id}}">{{this.name}}</a></p>
-  {{/each}}
+  <div class="favourite-container">
+    {{#each result.favourites}}
+    <p class="saved-favourite"><a href="/spotlist/detail/{{this.id}}">{{this.name}}</a></p>
+    {{/each}}
+  </div>
 </div>
