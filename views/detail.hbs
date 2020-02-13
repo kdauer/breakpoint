@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +18,12 @@
   </style> --}}
 </head>
 <div class="detail-container">
-  <h1>Spot Overview</h1>
-  <h2>{{info.0.name}} {{info.0.type}}break</h2>
-  <form id="favourite-form" action="/auth/user/{{info.0.id}}" method="post">
-    <button type="submit">Favourite</button>
-  </form>
+  {{#if message}}
+  <div class="error-message">{{ message }}</div>
+  {{/if}}
+  <h1>SURF REPORT AND FORECAST</h1>
+  <h2>for {{info.0.name}}</h2>
+  <a href="/auth/user/favourites/{{info.0._id}}">Save to Favourites</a>
   <div class="forecast-overview">
     <div id="wave-height-container">
       <p>Wave Height <span>{{waveInfo.height}}</span></p>
@@ -101,3 +105,5 @@
 <script
   src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="/javascripts/chart.js"></script>
+
+</html>

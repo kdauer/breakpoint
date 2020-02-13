@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
+const Spots = require("./spots");
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -66,23 +67,32 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.post("/auth/user/:id", (req, res) => {
-  //console.log(req.user.id);
-  User.findByIdAndUpdate(
-    req.user._id,
-    {
-      $push: { favourites: req.params.id }
-    },
-    { new: true }
-  )
-    .then(result => {
-      result.populate({ path: "favourites" });
-      console.log(result);
-      let list = result;
-      res.render("auth/user.hbs", { result, list });
+router.get("/auth/user/favourites/:id", (req, res, next) => {
+  // console.log(req.params);
+  User.findById(req.user._id)
+    .then(user => {
+      if (!user.favourites.includes(req.params.id)) {
+        User.findByIdAndUpdate(
+          req.user._id,
+          {
+            $push: { favourites: req.params.id }
+          },
+          { new: true }
+        )
+          .populate({ path: "favourites" })
+          .then(result => {
+            res.render("auth/user.hbs", { result: result });
+          })
+
+          .catch(err => {
+            next(err);
+          });
+      } else {
+        res.render("../views/home.hbs", { message: "already added" });
+      }
     })
     .catch(err => {
-      next(err);
+      console.log(err);
     });
 });
 

@@ -1,5 +1,10 @@
 <div class="userpage-container">
-  <h1>Welcome {{result.username}}</h1>
+  <h1>Welcome {{result.user.username}}</h1>
   <p>save your favourite spot</p>
-  <p class="saved-favourite">{{list}}</p>
+  {{#if message}}
+  <div class="error-message">{{ message }}</div>
+  {{/if}}
+  {{#each result.favourites}}
+  <p class="saved-favourite"><a href="/spotlist/detail/{{this.id}}">{{this.name}}</a></p>
+  {{/each}}
 </div>

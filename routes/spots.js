@@ -57,7 +57,7 @@ router.get("/spotlist/forecast/:id", (req, res) => {
 router.get("/spotlist/detail/:id", (req, res) => {
   Spot.find({ id: req.params.id })
     .then(info => {
-      // console.log("here", info);
+      console.log("here", info);
       return axios
         .get(
           `https://services.surfline.com/kbyg/spots/reports?spotId=${req.params.id}`
