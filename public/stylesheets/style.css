@@ -55,7 +55,9 @@ body {
   align-items: center;
   max-width: 80vw;
   height: 10%;
-  padding: 0 10%; }
+  padding: 0 10%;
+  opacity: 0.85;
+  border-radius: 5px; }
 
 .select-wrapper {
   width: 60vw;
@@ -133,18 +135,21 @@ select:focus::-ms-value {
 
 .detail-container {
   margin: 0;
-  margin-top: 1%; }
+  margin-top: 1%;
+  margin-bottom: 1%; }
 
 .detail-container h1 {
   font-weight: 100;
-  margin-left: 10vw; }
+  margin-left: 10vw;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem; }
 
 .detail-container h2 {
   font-weight: 200; }
 
 .detail-container h1,
 h2,
-h3 {
+h4 {
   display: inline; }
 
 .detail-container form {
@@ -173,8 +178,8 @@ h3 {
 
 .forecast-overview {
   margin: 0 5rem;
-  margin-top: 2.5em;
   line-height: 0.35;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -191,7 +196,8 @@ h3 {
   background-color: #e6e6e6;
   margin: 0 5rem;
   display: flex;
-  justify-content: space-evenly; }
+  justify-content: space-evenly;
+  align-items: stretch; }
 
 #recommendation-container p {
   color: #879ba4; }
@@ -199,17 +205,41 @@ h3 {
 #recommendation-container p span {
   color: black; }
 
-.ideal-condition-overview {
-  display: flex; }
+.logo {
+  max-height: 10px;
+  width: auto;
+  position: center;
+  color: #879ba4; }
 
-#ideal-title {
-  margin-top: 1.75em; }
+.logo img {
+  padding: 0.25rem; }
+
+.ideal-condition-overview {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  background-color: whitesmoke;
+  margin: 0 5rem;
+  line-height: 0.35;
+  margin-top: 0.25rem;
+  align-items: stretch; }
 
 #ideal-title h3 {
   font-weight: 200;
   margin-left: 10vw;
   margin-top: 2.5em;
+  margin-bottom: 0.1em;
   font-size: 2em; }
+
+footer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-decoration: none; }
+
+footer a {
+  text-decoration: none;
+  color: #229fff; }
 
 button span {
   display: none; }
@@ -260,8 +290,5 @@ button span {
   margin: 20px auto;
   padding: 20px;
   width: 100%; }
-
-#map {
-  margin: 0 25vw; }
 
 /*# sourceMappingURL=style.css.map */

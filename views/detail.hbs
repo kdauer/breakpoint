@@ -29,7 +29,7 @@
     <a href="/auth/user">{{user.username}}</a>
     <a href="/logout">Log out</a>
     {{else}}
-    <div><a href="/auth/signup">Sign Up!</a></div>
+    <div><a href="/auth/signup">Sign Up</a></div>
     <div><a href="/auth/login">Log In</a></div>
     {{/if}}
   </nav>
@@ -40,7 +40,7 @@
       <form id="add-favourites">
         <button type="submit" id="favourite"></button>
       </form>
-      <h3 id="added" style="visibility: hidden">Added to Favorites!</h3>
+      <h4 id="added" style="visibility: hidden">Added to Favorites!</h4>
     </div>
 
     <div class="forecast-overview">
@@ -58,7 +58,7 @@
       <div id="wind-container">
         <p id="description-title">Wind</p>
         <p>{{windInfo.speed}}</p>
-        <p>{{windInfo.direction}}({{windInfo.degree}}°)</p>
+        <p>{{windInfo.direction}} ({{windInfo.degree}}°)</p>
       </div>
       <div id="swell-container">
         <p id="description-title">Swells</p>
@@ -76,16 +76,21 @@
         <p><img src="{{weather}}" alt="{{overview.weather.condition}}">{{overview.weather.temperature}}°C</p>
       </div>
     </div>
+
     <div id="recommendation-container">
       <div>
-        <p><img src="/images/017-hand.png" alt="Hand" width="16px">recommended ability level: <span>{{levels}}</span>
+        <p><img src="/images/017-hand.png" alt="Hand" width="16px"> recommended ability level: <span> {{levels}}</span>
         </p>
       </div>
       <div>
-        <p><img src="/images/025-surfboard-3 .png" alt="Boards" width="16px">recommended board type:
-          <span>{{boards}}</span></p>
+        <p><img src="/images/025-surfboard-3 .png" alt="Boards" width="16px"> recommended board type:
+          <span> {{boards}}</span></p>
+      </div>
+      <div class="logo">powered by: <img src="/images/Surfline-1894871998f31f4c9d2077d05593e635.svg" height="32px"
+          alt="Surfline-Logo">
       </div>
     </div>
+
     <div id="ideal-title">
       <h3>Ideal {{info.0.name}} Surf Condition</h3>
     </div>
@@ -95,47 +100,18 @@
         <p>{{ideal.swell}}</p>
       </div>
       <div>
-        <p><img src="/images/003-wind-1.png" alt="Wind" width="16px"> <strong>Wind</strong></p>
+        <p><img src="/images/003-wind-1.png" alt="Wind" width="16px"> <strong> Wind</strong></p>
         <p>{{ideal.wind}}</p>
       </div>
       <div>
-        <p><img src="/images/019-wave-1.png" alt="Wave" width="16px"><strong>Surf Height</strong></p>
+        <p><img src="/images/019-wave-1.png" alt="Wave" width="16px"> <strong> Surf Height</strong></p>
         <p>{{ideal.size}}</p>
       </div>
       <div>
-        <p><img src="/images/tide.png" alt="Tide" width="16px"><strong>Tide</strong></p>
+        <p><img src="/images/tide.png" alt="Tide" width="16px"> <strong> Tide</strong></p>
         <p>{{ideal.tide}}</p>
       </div>
     </div>
-<<<<<<< HEAD
-    <div id="map" style="width:500px; height:500px;"></div>
-    <script>
-      mapboxgl.accessToken =
-        "pk.eyJ1Ijoic2hhdWxpdHRvIiwiYSI6ImNrNmk5dGZldTAyaWEza25udHMyMmsyM2wifQ.4Y2j_O7W5UvuwxXH7VDeEw";
-      var coords = {{{ location }}}
-      coords = [coords.x, coords.y]
-      console.log(coords)
-
-      var map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/light-v10",
-        center: coords,
-        zoom: 13
-      });
-
-      // create the marker
-      new mapboxgl.Marker()
-        .setLngLat(coords)
-        .addTo(map);
-    </script>
-    <div id="chart"><canvas id="bar-chart" width="600" height="350"></canvas></div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
-  <script src="/javascripts/chart.js"></script>
-=======
   </div>
   <div id="map" style="width:500px; height:500px; margin: 0 auto;"></div>
   <script>
@@ -156,13 +132,12 @@
       .addTo(map);
   </script>
   <div id="chart"><canvas id="bar-chart" width="600" height="200"></canvas></div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
-<script src="/javascripts/chart.js"></script>
->>>>>>> 6b731b845be1023cb379c7eee9faad031216945f
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script src="/javascripts/chart.js"></script>
 
   <script>
     document.querySelector("#add-favourites").onsubmit = (event) => {
@@ -175,6 +150,10 @@
       })
     }
   </script>
+  <footer>Made by
+    <a href="https://www.linkedin.com/in/konstantindauer/" target="_blank">Konstantin Dauer </a> and <a
+      href="https://www.linkedin.com/in/shaulmansour/" target="_blank">Shaul Mansour</a>
+    during Ironhack Bootcamp January 2020</footer>
 </body>
 
 </html>
