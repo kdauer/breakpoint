@@ -78,7 +78,7 @@ router.get("/spotlist/detail/:id", (req, res) => {
           const swellInfo = funcs.swell(overview.swells);
           //  console.log(swellInfo);
           // res.json(responseFromAPI.data.forecast);
-          console.log("leagcy ID", spotInfo.legacyId);
+          // console.log("leagcy ID", spotInfo.legacyId);
           if (spotInfo.legacyId) {
             return axios({
               url: `https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`,
