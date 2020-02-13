@@ -78,44 +78,90 @@ router.get("/spotlist/detail/:id", (req, res) => {
           const swellInfo = funcs.swell(overview.swells);
           //  console.log(swellInfo);
           // res.json(responseFromAPI.data.forecast);
-          return axios
-            .get(
-              `https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`,
-              next
-            )
-            .then(responsefromLegacyAPI => {
-              // let ideal = responsefromLegacyAPI.data;
-              // console.log(responsefromLegacyAPI);
-              let ideal = responsefromLegacyAPI.data[0].travel.best;
-              res.render("detail.hbs", {
-                layout: false,
-                info,
-                overview,
-                spotInfo,
-                windInfo,
-                tideTimeprev,
-                previousTideInfo,
-                tideTime,
-                nextTideInfo,
-                waveInfo,
-                weather,
-                location,
-                levels,
-                boards,
-                ideal,
-                swellInfo
-              });
-            })
-            .catch(err => {
-              next(err);
+          console.log("leagcy ID", spotInfo.legacyId);
+          if (spotInfo.legacyId) {
+            return axios({
+              url: `https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`,
+              method: "get",
+              validateStatus: () => true
+            }).then(responsefromLegacyAPI => {
+              //let ideal = responsefromLegacyAPI.data;
+              if (responsefromLegacyAPI.status === 200) {
+                let ideal = responsefromLegacyAPI.data[0].travel.best;
+                console.log(ideal);
+                res.render("detail.hbs", {
+                  layout: false,
+                  info,
+                  overview,
+                  spotInfo,
+                  windInfo,
+                  tideTimeprev,
+                  previousTideInfo,
+                  tideTime,
+                  nextTideInfo,
+                  waveInfo,
+                  weather,
+                  location,
+                  levels,
+                  boards,
+                  ideal,
+                  swellInfo
+                });
+              } else {
+                ideal = {
+                  size: "not available",
+                  swell: "not available",
+                  wind: "not available",
+                  tide: "not available"
+                };
+                res.render("detail.hbs", {
+                  layout: false,
+                  info,
+                  overview,
+                  spotInfo,
+                  windInfo,
+                  tideTimeprev,
+                  previousTideInfo,
+                  tideTime,
+                  nextTideInfo,
+                  waveInfo,
+                  weather,
+                  location,
+                  levels,
+                  boards,
+                  ideal,
+                  swellInfo
+                });
+              }
             });
+          } else {
+            ideal = { message: "not existing" };
+            res.render("detail.hbs", {
+              layout: false,
+              info,
+              overview,
+              spotInfo,
+              windInfo,
+              tideTimeprev,
+              previousTideInfo,
+              tideTime,
+              nextTideInfo,
+              waveInfo,
+              weather,
+              location,
+              levels,
+              boards,
+              ideal,
+              swellInfo
+            });
+          }
         })
         .catch(err => {
-          next(err);
+          console.log(err);
         });
     })
     .catch(err => {
-      next(err);
+      console.log(err);
     });
 });
 
