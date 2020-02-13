@@ -67,7 +67,7 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.get("/auth/user/favourites/:id", (req, res, next) => {
+router.post("/auth/user/favourites/:id", (req, res, next) => {
   // console.log(req.params);
   User.findById(req.user._id)
     .then(user => {
@@ -81,14 +81,15 @@ router.get("/auth/user/favourites/:id", (req, res, next) => {
         )
           .populate({ path: "favourites" })
           .then(result => {
-            res.render("auth/user.hbs", { result: result });
+            res.json();
+            // res.render("auth/user.hbs", { result: result });
           })
 
           .catch(err => {
             next(err);
           });
       } else {
-        res.render("../views/home.hbs", { message: "already added" });
+        res.json();
       }
     })
     .catch(err => {
@@ -97,7 +98,11 @@ router.get("/auth/user/favourites/:id", (req, res, next) => {
 });
 
 router.get("/auth/user", (req, res) => {
-  res.render("auth/user.hbs");
+  User.findById(req.user._id)
+    .populate({ path: "favourites" })
+    .then(result => {
+      res.render("auth/user.hbs", { result: result });
+    });
 });
 
 module.exports = router;
