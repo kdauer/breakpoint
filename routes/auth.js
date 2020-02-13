@@ -53,7 +53,8 @@ router.post("/signup", (req, res, next) => {
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
-          res.redirect("/auth/user");
+          console.log(newUser);
+          res.redirect("/auth/login");
         }
       });
     })
@@ -101,6 +102,7 @@ router.get("/auth/user", (req, res) => {
   User.findById(req.user._id)
     .populate({ path: "favourites" })
     .then(result => {
+      console.log(result);
       res.render("auth/user.hbs", { result: result });
     });
 });
