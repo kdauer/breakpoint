@@ -80,8 +80,7 @@ router.get("/spotlist/detail/:id", (req, res) => {
           // res.json(responseFromAPI.data.forecast);
           return axios
             .get(
-              `https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`,
-              next
+              `https://api.surfline.com/v1/mobile/report/${spotInfo.legacyId}`
             )
             .then(responsefromLegacyAPI => {
               // let ideal = responsefromLegacyAPI.data;
