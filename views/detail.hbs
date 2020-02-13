@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
   {{!-- <style>
@@ -17,117 +19,133 @@
     }
   </style> --}}
 </head>
-<nav class="navbar">
-  <a href="/">Home</a>
-  {{#if user}}
-  <a href="/logout">Log out</a>
-  {{else}}
-  <div><a href="/auth/signup">Sign Up!</a></div>
-  <div><a href="/auth/login">Log In</a></div>
-  {{/if}}
-</nav>
-<div class="detail-container">
-  {{#if message}}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
-  <h1>SURF REPORT AND FORECAST</h1>
-  <h2>for {{info.0.name}}</h2>
-  <form id="add-favourites">
-    <button type="submit">Save to Favourites</button>
-  </form>
-  <p id="added" style="display: noner">Added to Favorites!</p>
-  <div class="forecast-overview">
-    <div id="wave-height-container">
-      <p>Wave Height <span>{{waveInfo.height}}</span></p>
-      <p>{{waveInfo.relation}}</p>
+
+<body>
+
+
+  <nav class="navbar">
+    <div><a href="/">Home</a></div>
+    {{#if user}}
+    <a href="/auth/user">{{user.username}}</a>
+    <a href="/logout">Log out</a>
+    {{else}}
+    <div><a href="/auth/signup">Sign Up!</a></div>
+    <div><a href="/auth/login">Log In</a></div>
+    {{/if}}
+  </nav>
+  <div class="detail-container">
+    <div class="detail-names">
+      <h1>SURF REPORT AND FORECAST </h1>
+      <h2> for {{info.0.name}}</h2>
+      <form id="add-favourites">
+        <button type="submit" id="favourite"></button>
+      </form>
+      <h3 id="added" style="visibility: hidden">Added to Favorites!</h3>
     </div>
-    <div id="tide-container">current tide <span>{{overview.tide.current.height}}m</span><br>
-      <span>{{previousTideInfo.type}}Tide {{previousTideInfo.height}}m at {{tideTimeprev}}</span><br>
-      <span>{{nextTideInfo.type}}Tide {{nextTideInfo.height}}m at {{tideTime}}</span>
+
+    <div class="forecast-overview">
+      <div id="wave-height-container">
+        <p id="description-title">Wave Height</p>
+        <p>{{waveInfo.height}}</p>
+        <p>{{waveInfo.relation}}</p>
+      </div>
+      <div id="tide-container">
+        <p id="description-title"> current tide </p>
+        <p>{{overview.tide.current.height}}m</p>
+        <p>{{previousTideInfo.type}}Tide {{previousTideInfo.height}}m at {{tideTimeprev}}</p>
+        <p>{{nextTideInfo.type}}Tide {{nextTideInfo.height}}m at {{tideTime}}</p>
+      </div>
+      <div id="wind-container">
+        <p id="description-title">Wind</p>
+        <p>{{windInfo.speed}}</p>
+        <p>{{windInfo.direction}}({{windInfo.degree}}°)</p>
+      </div>
+      <div id="swell-container">
+        <p id="description-title">Swells</p>
+        {{#each swellInfo}}
+        <p>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</p>
+        {{/each}}
+      </div>
+      <div id="water-temp-container">
+        <p id="description-title">Water Temperature</p>
+        <p><img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg"
+            alt="WaterIcon">{{overview.waterTemp.min}} - {{overview.waterTemp.max}} °C</p>
+      </div>
+      <div id="weather-container">
+        <p id="description-title">Weather</p>
+        <p><img src="{{weather}}" alt="{{overview.weather.condition}}">{{overview.weather.temperature}}°C</p>
+      </div>
     </div>
-    <div id="wind-container">Wind <span>{{windInfo.speed}}</span><br>
-      <span>{{windInfo.direction}}({{windInfo.degree}}°)</span></div>
-    <div id="swell-container">Swells
-      {{#each swellInfo}}
-      <span>{{this.height}}m at {{this.period}}s {{this.direction.direction}} {{this.direction.degree}}°</span><br>
-      {{/each}}
+    <div id="recommendation-container">
+      <div>
+        <p><img src="/images/017-hand.png" alt="Hand" width="16px">recommended ability level: <span>{{levels}}</span>
+        </p>
+      </div>
+      <div>
+        <p><img src="/images/025-surfboard-3 .png" alt="Boards" width="16px">recommended board type:
+          <span>{{boards}}</span></p>
+      </div>
     </div>
-    <div id="water-temp-container">
-      <p>Water Temperature</p>
-      <img src="https://wa.cdn-surfline.com/quiver/0.6.2/weathericons/WATER_ICON.svg" alt="WaterIcon">
-      <span>{{overview.waterTemp.min}} - {{overview.waterTemp.max}} °C</span>
+    <div id="ideal-title">
+      <h3>Ideal {{info.0.name}} Surf Condition</h3>
     </div>
-    <div id="weather-container">
-      <p>Weather</p>
-      <img src="{{weather}}" alt="{{overview.weather.condition}}">
-      <span>{{overview.weather.temperature}}°C</span>
+    <div class="ideal-condition-overview">
+      <div>
+        <p><img src="/images/kompass.png" alt="Kompass" width="16px"> <strong> Swell Direction</strong></p>
+        <p>{{ideal.swell}}</p>
+      </div>
+      <div>
+        <p><img src="/images/003-wind-1.png" alt="Wind" width="16px"> <strong>Wind</strong></p>
+        <p>{{ideal.wind}}</p>
+      </div>
+      <div>
+        <p><img src="/images/019-wave-1.png" alt="Wave" width="16px"><strong>Surf Height</strong></p>
+        <p>{{ideal.size}}</p>
+      </div>
+      <div>
+        <p><img src="/images/tide.png" alt="Tide" width="16px"><strong>Tide</strong></p>
+        <p>{{ideal.tide}}</p>
+      </div>
     </div>
+    <div id="map" style="width:500px; height:500px;"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1Ijoic2hhdWxpdHRvIiwiYSI6ImNrNmk5dGZldTAyaWEza25udHMyMmsyM2wifQ.4Y2j_O7W5UvuwxXH7VDeEw";
+      var coords = {{{ location }}}
+      coords = [coords.x, coords.y]
+      console.log(coords)
+
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/light-v10",
+        center: coords,
+        zoom: 13
+      });
+
+      // create the marker
+      new mapboxgl.Marker()
+        .setLngLat(coords)
+        .addTo(map);
+    </script>
+    <div id="chart"><canvas id="bar-chart" width="600" height="350"></canvas></div>
   </div>
-  <div id="recommendation-container">
-    <div>recommended ability level:
-      <span>{{levels}}</span>
-    </div>
-    <div>recommended board type:
-      <span>{{boards}}</span>
-    </div>
-  </div>
-  <div class="ideal-condition-overview">
-    <h3>Ideal {{info.0.name}} Surf Condition</h3>
-    <div>Compass Icon
-      <p><strong>Swell Direction</strong></p>
-      <p>{{ideal.swell}}</p>
-    </div>
-    <div>Wind Icon
-      <p><strong>Wind</strong></p>
-      <p>{{ideal.wind}}</p>
-    </div>
-    <div>Wave Ivon
-      <p><strong>Surf Height</strong></p>
-      <p>{{ideal.size}}</p>
-    </div>
-    <div>Tide Icon
-      <p><strong>Tide</strong></p>
-      <p>{{ideal.tide}}</p>
-    </div>
-  </div>
-  <div id="map" style="width:500px; height:500px;"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <script src="/javascripts/chart.js"></script>
+
   <script>
-    mapboxgl.accessToken =
-      "pk.eyJ1Ijoic2hhdWxpdHRvIiwiYSI6ImNrNmk5dGZldTAyaWEza25udHMyMmsyM2wifQ.4Y2j_O7W5UvuwxXH7VDeEw";
-    var coords = {{{ location }}}
-    coords = [coords.x, coords.y]
-    console.log(coords)
+    document.querySelector("#add-favourites").onsubmit = (event) => {
+      event.preventDefault()
 
-    var map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/light-v10",
-      center: coords,
-      zoom: 13
-    });
-
-    // create the marker
-    new mapboxgl.Marker()
-      .setLngLat(coords)
-      .addTo(map);
+      axios.post("/auth/user/favourites/{{info.0.id}}").then(() => {
+        console.log("response received")
+        document.querySelector("#add-favourites").style.display = "none";
+        document.getElementById("added").style.visibility = "visible"
+      })
+    }
   </script>
-  <div id="chart"><canvas id="bar-chart" width="600" height="350"></canvas></div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.min.js"></script>
-<script src="/javascripts/chart.js"></script>
-
-<script>
-  document.querySelector("#add-favourites").onsubmit = (event) => {
-    event.preventDefault()
-
-    axios.post("/auth/user/favourites/{{info.0.id}}").then(() => {
-      console.log("response received")
-      document.querySelector("#add-favourites").style.display = "none";
-      document.getElementById("added").style.display = "block"
-    })
-  }
-</script>
+</body>
 
 </html>
