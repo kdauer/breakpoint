@@ -1,4 +1,3 @@
-console.log("hello");
 axios
   .get(`/spotlist/forecast/${location.pathname.split("/")[3]}`)
   .then(data => {

@@ -88,7 +88,7 @@ router.get("/spotlist/detail/:id", (req, res) => {
               //let ideal = responsefromLegacyAPI.data;
               if (responsefromLegacyAPI.status === 200) {
                 let ideal = responsefromLegacyAPI.data[0].travel.best;
-                console.log(ideal);
+                // console.log(ideal);
                 res.render("detail.hbs", {
                   layout: false,
                   info,
@@ -109,10 +109,10 @@ router.get("/spotlist/detail/:id", (req, res) => {
                 });
               } else {
                 ideal = {
-                  size: "not available",
-                  swell: "not available",
-                  wind: "not available",
-                  tide: "not available"
+                  size: "currently unavailable",
+                  swell: "currently unavailable",
+                  wind: "currently unavailable",
+                  tide: "currently unavailable"
                 };
                 res.render("detail.hbs", {
                   layout: false,

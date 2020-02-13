@@ -53,7 +53,7 @@ router.post("/signup", (req, res, next) => {
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
-          console.log(newUser);
+          // console.log(newUser);
           res.redirect("/auth/login");
         }
       });
@@ -69,7 +69,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/auth/user/favourites/:id", (req, res, next) => {
-  console.log(req.params);
+  // console.log(req.params);
   Spots.findOne({ id: req.params.id }).then(spotInfo => {
     User.findById(req.user._id)
       .then(user => {
@@ -104,7 +104,7 @@ router.get("/auth/user", (req, res) => {
   User.findById(req.user._id)
     .populate({ path: "favourites" })
     .then(result => {
-      console.log("here are the results", result);
+      // console.log("here are the results", result);
       res.render("auth/user.hbs", { result: result });
     });
 });
