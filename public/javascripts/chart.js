@@ -36,6 +36,14 @@ axios
         ]
       },
       options: {
+        layout: {
+          padding: {
+            left: 50,
+            right: 50,
+            top: 50,
+            bottom: 0
+          }
+        },
         plugins: {
           datalabels: {
             labels: {
@@ -61,9 +69,12 @@ axios
           yAxes: [
             {
               stacked: true,
-              gridLines: { display: false },
+              gridLines: { display: false, zeroLine: false },
               ticks: {
-                display: false
+                display: false,
+                max: 18,
+                min: 0,
+                stepSize: 2
               }
             }
           ]
