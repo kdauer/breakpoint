@@ -90,7 +90,7 @@
       <p>{{ideal.tide}}</p>
     </div>
   </div>
-  <div id="map" style="width:500px; height:500px;"></div>
+  <div id="map" style="width:500px; height:500px; margin: 0 auto;"></div>
   <script>
     mapboxgl.accessToken =
       "pk.eyJ1Ijoic2hhdWxpdHRvIiwiYSI6ImNrNmk5dGZldTAyaWEza25udHMyMmsyM2wifQ.4Y2j_O7W5UvuwxXH7VDeEw";
@@ -104,13 +104,11 @@
       center: coords,
       zoom: 13
     });
-
-    // create the marker
     new mapboxgl.Marker()
       .setLngLat(coords)
       .addTo(map);
   </script>
-  <div id="chart"><canvas id="bar-chart" width="600" height="350"></canvas></div>
+  <div id="chart"><canvas id="bar-chart" width="600" height="200"></canvas></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
