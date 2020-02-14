@@ -162,10 +162,14 @@ h4 {
   height: 32px;
   width: 32px;
   border: none;
-  transition: all ease-in-out 0.2s;
+  transition-delay: 0s !important;
   cursor: pointer; }
 
 #favourite:hover {
+  pointer-events: auto;
+  transition: all 0s 0.01s ease;
+  /* Mouse enter: delay */
+  transition-delay: 0s !important;
   border: 1px solid #229fff;
   background-color: #229fff; }
 
