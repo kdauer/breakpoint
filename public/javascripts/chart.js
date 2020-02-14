@@ -71,7 +71,7 @@ axios
               gridLines: { display: false, zeroLine: false },
               ticks: {
                 display: false,
-                max: 18,
+                max: 30,
                 min: 0,
                 stepSize: 2
               }

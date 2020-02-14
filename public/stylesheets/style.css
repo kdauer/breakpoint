@@ -178,12 +178,16 @@ h4 {
 
 .forecast-overview {
   margin: 0 5rem;
-  line-height: 0.35;
   margin-top: 0.5rem;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
   background-color: whitesmoke; }
+
+.forecast-overview p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+  font-size: 1vw; }
 
 #description-title {
   font-weight: 100;
@@ -205,8 +209,11 @@ h4 {
 #recommendation-container p span {
   color: black; }
 
+#recommendation-container div {
+  display: flex;
+  align-items: center; }
+
 .logo {
-  max-height: 10px;
   width: auto;
   position: center;
   color: #879ba4; }
