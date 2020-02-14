@@ -54,7 +54,9 @@ router.post("/signup", (req, res, next) => {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
           // console.log(newUser);
-          res.redirect("/auth/login");
+          req.login(newUser, () => {
+            res.redirect("/auth/user");
+          });
         }
       });
     })
