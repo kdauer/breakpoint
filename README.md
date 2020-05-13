@@ -74,7 +74,7 @@ $ npm start
 ```
 
 ## Features
-* Filter spots by brake
+* Filter spots by break
 * Choose beaches in Portugal by region
 * See live weather information and surfing conditions in the spot
 * Sign up and login to create a user 
