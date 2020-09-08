@@ -15,7 +15,11 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
 mongoose
+<<<<<<< HEAD
   .connect(process.env.DB_URI || 'mongodb://localhost:27017/Break-Point', {
+=======
+  .connect(process.env.DB_URI || "mongodb://localhost:27017/Break-Point", {
+>>>>>>> 88270605b148423476bf745f673440ca33201196
     useNewUrlParser: true
   })
   .then(x => {
